@@ -2799,6 +2799,10 @@ img {
     flex: 1;
   }
 
+  .navbar-search-wrapper.mobile-search-active .little-search-input {
+    font-size: 16px;
+  }
+
   .navbar-search-wrapper.mobile-search-active .mobile-search-close-btn {
     display: inline-flex;
     align-items: center;
@@ -2824,25 +2828,43 @@ img {
     justify-content: center;
     padding: 6px;
     margin-right: -4px;
+    position: relative;
+    z-index: 260;
+  }
+
+  .mobile-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 240;
   }
 
   .nav-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    display: flex;
+    position: fixed;
+    top: 0;
     right: 0;
+    left: auto;
+    height: 100vh;
+    height: 100dvh;
+    width: min(300px, 82vw);
     background: #ffffff;
     flex-direction: column;
-    padding: 20px;
-    border-bottom: 1px solid #e0dbce;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    padding: 76px 24px 28px;
+    border-left: 1px solid #e0dbce;
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.14);
     gap: 16px;
     align-items: flex-start;
+    overflow-y: auto;
+    z-index: 250;
+    transform: translateX(100%);
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
   }
 
   .nav-menu.mobile-open {
-    display: flex;
+    transform: translateX(0);
+    pointer-events: auto;
   }
 
   .sharp-dropdown-menu {
@@ -7003,48 +7025,53 @@ img {
 
 @media (max-width: 560px) {
   .hero-orbital-stage {
+    width: 340px;
+    height: 340px;
+  }
+
+  .hero-orbital-dashed-ring {
+    left: 56%;
     width: 310px;
     height: 310px;
   }
 
-  .hero-orbital-dashed-ring {
-    left: 58%;
-    width: 290px;
-    height: 290px;
+  .hero-main-big-circle {
+    left: 56%;
+    width: 235px;
+    height: 235px;
   }
 
-  .hero-main-big-circle {
-    left: 58%;
-    width: 200px;
-    height: 200px;
+  .hero-main-circle-img-wrap {
+    width: 88%;
+    height: 88%;
   }
 
   .hero-small-orbital-circle {
-    left: 58%;
-    width: 50px;
-    height: 50px;
+    left: 56%;
+    width: 56px;
+    height: 56px;
     padding: 5px;
     border-width: 2px;
   }
 
   .orbital-slot-1 {
-    transform: translate(calc(-50% - 76px), calc(-50% - 123px)) scale(1);
+    transform: translate(calc(-50% - 82px), calc(-50% - 132px)) scale(1);
   }
 
   .orbital-slot-2 {
-    transform: translate(calc(-50% - 128px), calc(-50% - 68px)) scale(1);
+    transform: translate(calc(-50% - 137px), calc(-50% - 72px)) scale(1);
   }
 
   .orbital-slot-3 {
-    transform: translate(calc(-50% - 144px), calc(-50% + 12px)) scale(1.06);
+    transform: translate(calc(-50% - 154px), calc(-50% + 13px)) scale(1.06);
   }
 
   .orbital-slot-4 {
-    transform: translate(calc(-50% - 114px), calc(-50% + 89px)) scale(1);
+    transform: translate(calc(-50% - 122px), calc(-50% + 95px)) scale(1);
   }
 
   .orbital-slot-5 {
-    transform: translate(calc(-50% - 54px), calc(-50% + 134px)) scale(0.5);
+    transform: translate(calc(-50% - 58px), calc(-50% + 144px)) scale(0.5);
   }
 
   .hero-orbital-outline-btn,

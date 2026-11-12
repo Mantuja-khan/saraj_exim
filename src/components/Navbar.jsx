@@ -87,6 +87,15 @@ export default function Navbar({
           />
         </div>
 
+        {/* Mobile Right-Side Drawer Backdrop */}
+        {isMobileMenuOpen && (
+          <div
+            className="mobile-nav-backdrop"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
         {/* 2. Middle: Navigation Links (Clean & Well Separated) */}
         <ul className={`nav-menu ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
           <li>
