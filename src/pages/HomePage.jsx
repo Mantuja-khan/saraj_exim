@@ -5,7 +5,6 @@ import {
 } from 'lucide-react';
 import { SARAJ_PRODUCTS, CATEGORIES } from '../data/sarajData';
 import PromotionalBanner from '../components/PromotionalBanner';
-import OrganicSignatureSection from '../components/OrganicSignatureSection';
 import PromotionalDuoBanners from '../components/PromotionalDuoBanners';
 import ProductCard from '../components/ProductCard';
 
@@ -242,12 +241,6 @@ export default function HomePage({
 
         </div>
       </section>
-
-      {/* ORGANIC SIGNATURE BLENDS SECTION (Replaces Goodness of Nature for a Better Tomorrow) */}
-      <OrganicSignatureSection
-        onNavigate={onNavigate}
-        onSelectProduct={onSelectProduct}
-      />
 
       {/* PROMOTIONAL DUO BANNERS (MATCHING USER REFERENCE IMAGE 1) */}
       <PromotionalDuoBanners

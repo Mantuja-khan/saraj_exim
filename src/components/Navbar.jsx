@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Search,
   ShoppingCart,
@@ -24,7 +24,15 @@ export default function Navbar({
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchDropdownOpen, setIsSearchDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    if (isMobileSearchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [isMobileSearchOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,15 +86,6 @@ export default function Navbar({
             className="saraj-nav-logo-img"
           />
         </div>
-
-        {/* Mobile Hamburger Toggle */}
-        <button
-          className="mobile-nav-toggle"
-          onClick={() => setIsMobileMenuOpen(prev => !prev)}
-          aria-label="Toggle navigation"
-        >
-          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
 
         {/* 2. Middle: Navigation Links (Clean & Well Separated) */}
         <ul className={`nav-menu ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
@@ -190,20 +189,22 @@ export default function Navbar({
           </li>
         </ul>
 
-        {/* 3. Right Side Corner: Search, Cart & Catalogue Button at the Far Right Corner */}
+        {/* 3. Right Side Corner: Search, Cart & Mobile Toggle at the Far Right Corner */}
         <div className="navbar-right-actions">
-          {/* Integrated Search Input */}
-          <div className="navbar-search-wrapper">
+          {/* Integrated Search Input (Full-width overlay on small screens when opened) */}
+          <div className={`navbar-search-wrapper ${isMobileSearchOpen ? 'mobile-search-active' : ''}`}>
             <form
               className="navbar-little-search"
               onSubmit={(e) => {
                 e.preventDefault();
                 onNavigate('products');
                 setIsSearchDropdownOpen(false);
+                setIsMobileSearchOpen(false);
               }}
             >
               <Search size={14} className="little-search-icon" />
               <input
+                ref={searchInputRef}
                 type="text"
                 placeholder="Search herbs..."
                 value={searchQuery}
@@ -214,19 +215,39 @@ export default function Navbar({
                 onFocus={() => setIsSearchDropdownOpen(true)}
                 className="little-search-input"
               />
-              {searchQuery && (
+              {(searchQuery || isMobileSearchOpen) && (
                 <button
                   type="button"
                   className="little-search-clear"
+                  aria-label="Close search"
                   onClick={() => {
-                    setSearchQuery('');
-                    setIsSearchDropdownOpen(false);
+                    if (searchQuery) {
+                      setSearchQuery('');
+                      setIsSearchDropdownOpen(false);
+                    } else {
+                      setIsMobileSearchOpen(false);
+                      setIsSearchDropdownOpen(false);
+                    }
                   }}
                 >
-                  <X size={12} />
+                  <X size={14} />
                 </button>
               )}
             </form>
+
+            {isMobileSearchOpen && (
+              <button
+                type="button"
+                className="mobile-search-close-btn"
+                aria-label="Close mobile search"
+                onClick={() => {
+                  setIsMobileSearchOpen(false);
+                  setIsSearchDropdownOpen(false);
+                }}
+              >
+                <X size={18} />
+              </button>
+            )}
 
             {/* Instant Search Dropdown */}
             {isSearchDropdownOpen && searchQuery.trim() && (
@@ -251,6 +272,7 @@ export default function Navbar({
                       onClick={() => {
                         onSelectProduct(prod);
                         setIsSearchDropdownOpen(false);
+                        setIsMobileSearchOpen(false);
                       }}
                     >
                       <img src={prod.image} alt={prod.name} className="dropdown-item-thumb" />
@@ -266,7 +288,21 @@ export default function Navbar({
             )}
           </div>
 
-          {/* Cart Icon Button with Badge */}
+          {/* Mobile Search Icon Button (left of Cart on small screens) */}
+          <button
+            type="button"
+            className="mobile-search-toggle-btn"
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              setIsMobileSearchOpen(true);
+            }}
+            aria-label="Search products"
+            title="Search"
+          >
+            <Search size={19} />
+          </button>
+
+          {/* Cart Icon Button with Badge (left of Toggle on small screens) */}
           <button
             type="button"
             className="nav-cart-btn"
@@ -275,6 +311,16 @@ export default function Navbar({
           >
             <ShoppingCart size={19} />
             {cartCount > 0 && <span className="badge-counter">{cartCount}</span>}
+          </button>
+
+          {/* Mobile Hamburger Toggle (exact right side on small screens) */}
+          <button
+            type="button"
+            className="mobile-nav-toggle"
+            onClick={() => setIsMobileMenuOpen(prev => !prev)}
+            aria-label="Toggle navigation"
+          >
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
