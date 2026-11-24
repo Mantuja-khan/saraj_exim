@@ -328,7 +328,6 @@ export default function HomePage({
                     />
                   </div>
                 </div>
-
                 {/* Small Orbital Product Circles rotating along the dashed arc every 5s */}
                 {heroProducts.map((prod, idx) => (
                   <button

@@ -7304,20 +7304,24 @@ img {
 
   .hero-orbital-stage {
     position: relative;
-    width: 380px;
-    max-width: 100%;
+    width: min(100%, 390px);
     height: 330px;
     margin: 0 auto;
   }
 
+  /* Center the Top Circle & Rings exactly on Small Screens */
   .hero-orbital-dashed-ring {
-    left: 44%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 300px;
     height: 300px;
   }
 
   .hero-main-big-circle {
-    left: 44%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 220px;
     height: 220px;
   }
@@ -7328,7 +7332,8 @@ img {
   }
 
   .hero-small-orbital-circle {
-    left: 44%;
+    left: 50%;
+    top: 50%;
     width: 48px;
     height: 48px;
     padding: 4px;
@@ -7336,29 +7341,29 @@ img {
   }
 
   .orbital-slot-1 {
-    transform: translate(calc(-50% - 72px), calc(-50% - 116px)) scale(1);
+    transform: translate(calc(-50% - 78px), calc(-50% - 124px)) scale(1);
   }
 
   .orbital-slot-2 {
-    transform: translate(calc(-50% - 120px), calc(-50% - 64px)) scale(1);
+    transform: translate(calc(-50% - 130px), calc(-50% - 68px)) scale(1);
   }
 
   .orbital-slot-3 {
-    transform: translate(calc(-50% - 136px), calc(-50% + 11px)) scale(1.06);
+    transform: translate(calc(-50% - 146px), calc(-50% + 12px)) scale(1.06);
   }
 
   .orbital-slot-4 {
-    transform: translate(calc(-50% - 108px), calc(-50% + 82px)) scale(1);
+    transform: translate(calc(-50% - 116px), calc(-50% + 88px)) scale(1);
   }
 
   .orbital-slot-5 {
-    transform: translate(calc(-50% - 50px), calc(-50% + 126px)) scale(0.5);
+    transform: translate(calc(-50% - 54px), calc(-50% + 136px)) scale(0.5);
   }
 
-  /* Glowing Curved Arc along Right Rim on Small Screens */
+  /* Glowing Curved Arc along Right Rim Centered on Circle */
   .hero-circle-glowing-rim {
     display: block;
-    left: 44%;
+    left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 232px;
@@ -7368,10 +7373,11 @@ img {
     z-index: 6;
   }
 
-  /* Right-Side Badges STAY AT THE EDGE OF THE CIRCLE on Small Screens with Smaller Font */
+  /* Right-Side Badges STAY AT THE EDGE OF THE CENTERED CIRCLE on Small Screens */
   .hero-circle-edge-badges {
     position: absolute;
-    right: 4px;
+    left: calc(50% + 78px);
+    right: auto;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -7404,8 +7410,8 @@ img {
   }
 
   .edge-badge-1 { transform: translateX(2px); }
-  .edge-badge-2 { transform: translateX(12px); }
-  .edge-badge-3 { transform: translateX(12px); }
+  .edge-badge-2 { transform: translateX(10px); }
+  .edge-badge-3 { transform: translateX(10px); }
   .edge-badge-4 { transform: translateX(2px); }
 
   .hero-right-outer-circle {
@@ -7487,59 +7493,70 @@ img {
 
 @media (max-width: 560px) {
   .hero-orbital-stage {
-    width: 350px;
-    max-width: 100%;
+    width: min(100%, 350px);
     height: 290px;
+    margin: 0 auto;
   }
 
+  /* Center the Top Circle & Rings exactly on Small Screens */
   .hero-orbital-dashed-ring {
-    left: 40%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 260px;
     height: 260px;
   }
 
   .hero-main-big-circle {
-    left: 40%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 195px;
     height: 195px;
   }
 
   .hero-circle-glowing-rim {
-    left: 40%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 206px;
     height: 206px;
   }
 
   .hero-small-orbital-circle {
-    left: 40%;
+    left: 50%;
+    top: 50%;
     width: 42px;
     height: 42px;
     padding: 3px;
   }
 
   .orbital-slot-1 {
-    transform: translate(calc(-50% - 62px), calc(-50% - 100px)) scale(1);
+    transform: translate(calc(-50% - 68px), calc(-50% - 108px)) scale(1);
   }
 
   .orbital-slot-2 {
-    transform: translate(calc(-50% - 104px), calc(-50% - 55px)) scale(1);
+    transform: translate(calc(-50% - 114px), calc(-50% - 60px)) scale(1);
   }
 
   .orbital-slot-3 {
-    transform: translate(calc(-50% - 118px), calc(-50% + 10px)) scale(1.06);
+    transform: translate(calc(-50% - 128px), calc(-50% + 10px)) scale(1.06);
   }
 
   .orbital-slot-4 {
-    transform: translate(calc(-50% - 94px), calc(-50% + 70px)) scale(1);
+    transform: translate(calc(-50% - 102px), calc(-50% + 76px)) scale(1);
   }
 
   .orbital-slot-5 {
-    transform: translate(calc(-50% - 44px), calc(-50% + 108px)) scale(0.5);
+    transform: translate(calc(-50% - 48px), calc(-50% + 118px)) scale(0.5);
   }
 
-  /* Stay at the edges of the circle with small font on mobile */
+  /* Stay at the edges of the centered circle with small font on mobile */
   .hero-circle-edge-badges {
-    right: 0px;
+    left: calc(50% + 68px);
+    right: auto;
+    top: 50%;
+    transform: translateY(-50%);
     gap: 5px;
   }
 
@@ -7623,22 +7640,43 @@ img {
   .hero-orbital-stage {
     width: 320px;
     height: 270px;
+    margin: 0 auto;
   }
 
   .hero-main-big-circle {
     width: 175px;
     height: 175px;
-    left: 38%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .hero-circle-glowing-rim {
     width: 185px;
     height: 185px;
-    left: 38%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-orbital-dashed-ring {
+    width: 235px;
+    height: 235px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-small-orbital-circle {
+    left: 50%;
+    top: 50%;
+    width: 38px;
+    height: 38px;
   }
 
   .hero-circle-edge-badges {
-    right: -2px;
+    left: calc(50% + 60px);
+    right: auto;
     gap: 4px;
   }
 
