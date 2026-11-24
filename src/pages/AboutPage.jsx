@@ -17,7 +17,6 @@ export default function AboutPage({ onNavigate, onSelectProduct }) {
     { label: 'Mode of Transport', value: 'By Road' },
     { label: 'Mode of Payment', value: 'Online Payments(NEFT/RTGS/IMPS), Cheque/DD, Cash' }
   ];
-
   return (
     <div className="saraj-page about-page">
       {/* TOP CHEVRON CTA BANNER */}

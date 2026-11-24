@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
 import CartDrawer from './components/CartDrawer';
 import CatalogueModal from './components/CatalogueModal';
+import Preloader from './components/Preloader';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
@@ -20,6 +21,22 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCatalogueOpen, setIsCatalogueOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
+  const [showPreloader, setShowPreloader] = useState(() => {
+    try {
+      return !window.sessionStorage.getItem('saraj_preloader_seen');
+    } catch {
+      return true;
+    }
+  });
+
+  const handlePreloaderFinish = () => {
+    setShowPreloader(false);
+    try {
+      window.sessionStorage.setItem('saraj_preloader_seen', '1');
+    } catch {
+      // Ignore storage restrictions
+    }
+  };
 
   // Sync hash routing on mount and hash changes
   useEffect(() => {
@@ -159,6 +176,9 @@ export default function App() {
 
   return (
     <div className="saraj-website">
+      {/* Initial Browser Load Animation */}
+      {showPreloader && <Preloader onFinish={handlePreloaderFinish} />}
+
       {/* Toast Notice */}
       {toastMessage && (
         <div className="toast-notice">
