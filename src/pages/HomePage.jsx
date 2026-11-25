@@ -202,11 +202,11 @@ export default function HomePage({
                 <OrganicLeaf size={64} rot={34} className="hero-title-leaf-inline" />
               </h1>
 
-              {/* 3. Sub-Divider: HERBAL POWDER • PURE & NATURAL 100G */}
+              {/* 3. Sub-Divider: Category & Subtitle (Clean, responsive and wrap-safe) */}
               <div className="hero-sub-divider">
                 <span className="hero-sub-divider-line" />
                 <span className="hero-sub-divider-text">
-                  {(activeProduct.categoryName || 'HERBAL POWDER').toUpperCase()} • PURE &amp; NATURAL {(activeProduct.subtitle || '100G').toUpperCase()}
+                  {(activeProduct.categoryName || 'HERBAL POWDER').toUpperCase()} • {(activeProduct.subtitle || 'PURE & NATURAL 100G').toUpperCase()}
                 </span>
                 <span className="hero-sub-divider-line" />
               </div>

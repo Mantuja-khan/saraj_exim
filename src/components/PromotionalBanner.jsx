@@ -10,7 +10,7 @@ export default function PromotionalBanner({ onSelectProduct, onNavigate }) {
         <div className="promo-banner-left animate-left">
           <span className="promo-eyebrow">SPECIAL PROMO</span>
           <div className="promo-heading-wrap">
-            <h2 className="promo-main-title">
+            <h2 className="promo-main-title serif-heading">
               OUR BEST PRODUCT
             </h2>
           </div>

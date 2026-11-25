@@ -3,7 +3,8 @@ import {
   Mail,
   MapPin,
   Send,
-  CheckCircle2
+  CheckCircle2,
+  ArrowRight
 } from 'lucide-react';
 import PageTopCtaBanner from '../components/PageTopCtaBanner';
 
@@ -248,6 +249,57 @@ export default function ContactPage({ showToast }) {
                   Contact Export Desk
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SARAJ EXIMS MAP SECTION (EXCLUSIVE FULL MAP WITH HIGHLIGHTED AREA & SARAJ EXIMS PIN) */}
+      <section className="contact-map-only-section" id="location-map">
+        <div className="contact-map-inner">
+          <iframe
+            title="Saraj Exims Location Map"
+            src="https://maps.google.com/maps?q=28.2123356,76.8598471+(Saraj%20Exims)&t=&z=18&ie=UTF8&iwloc=B&output=embed"
+            width="100%"
+            height="480"
+            style={{ border: 0, display: 'block' }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+
+          {/* Highlighted Area Card for SARAJ EXIMS */}
+          <div className="map-highlight-overlay">
+            <div className="map-highlight-card">
+              <div className="map-highlight-header">
+                <div className="map-pin-pulse-wrap">
+                  <div className="map-pulse-ring" />
+                  <MapPin size={22} className="map-pin-icon" />
+                </div>
+                <div className="map-highlight-head-text">
+                  <span className="map-highlight-badge">HEADQUARTERS &amp; FACILITY</span>
+                  <h3 className="map-highlight-title">Saraj Exims</h3>
+                </div>
+              </div>
+
+              <p className="map-highlight-address">
+                TC 524B, 5th Floor, Capital High Street, Bhiwadi - 301019, Rajasthan, India
+              </p>
+
+              <div className="map-highlight-meta">
+                <span className="map-meta-tag">Capital High Street</span>
+                <span className="map-meta-tag">Saraj Foundation</span>
+              </div>
+
+              <a
+                href="https://www.google.com/maps/place/Saraj+Foundation+%7C+Best+NGO+in+Bhiwadi/@28.2123356,76.859059,118m/data=!3m1!1e3!4m10!1m2!2m1!1sTC+524B,+5TH+FLOOR,+CAPITAL+HIGH+STREET,+BHIWADI,+Bhiwadi+-+301019,+Rajasthan,+India!3m6!1s0x390d375c7bbec911:0x23a978e86c1efcbf!8m2!3d28.2123356!4d76.8598471!15sClRUQyA1MjRCLCA1VEggRkxPT1IsIENBUElUQUwgSElHSCBTVFJFRVQsIEJISVdBREksIEJoaXdhZGkgLSAzMDEwMTksIFJhamFzdGhhbiwgSW5kaWGSARVzb2NpYWxfd2VsZmFyZV9jZW50ZXLgAQA!16s%2Fg%2F11lyzysxdw?entry=ttu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="map-view-larger-btn"
+              >
+                <span>View on Google Maps</span>
+                <ArrowRight size={15} />
+              </a>
             </div>
           </div>
         </div>
